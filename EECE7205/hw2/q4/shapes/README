@@ -1,0 +1,5 @@
+Type "make" in the command line to complie
+Type "./main" in the command line to execute the program
+Type "make clean" to clean the Object and Out file
+
+length of square is 1.1, width of rectangle is 2.2, height of rectangle is 3.3, radius of circle is 5.5
