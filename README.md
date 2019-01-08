@@ -1,2 +1,3 @@
 # Graduate
-Assignments in Northeastern University!
+
+Notes and assignments in Northeastern University!
