@@ -49,23 +49,24 @@ Relu的优势有两个：
 
 1. 可以提供非线性
 2. 带来sparsity，这是一个很好的性质。稀疏性可以减少参数之间的相互依赖关系，降低过拟合的风险。有一些类似于dropout的风险。
-3. 不会出现梯度弥散
+3. 不会出现梯度弥散(这也是sigmoid等relu函数出现的问题)
 
 缺点：
 
 1. 对初始化敏感
 2. 0的位置不可导
 
-Relu的集中变形：
+Relu的几种变形：
 
 1. soft relu
 2. 2nd_relu
+3. leaky relu
 
-配合不同的dropout会表现的好
+配合不同的dropout会表现的好，这是
 
 不同的structure会更接近于使用不同的activation function，比如说RNN会关注一些于state有关的状态和取值，我们一般会使用sigmoid和tanh多一些。而一般CNN则会使用relu。
 
-这里就可以说sigmoid的优势，适合用于与0/1取值、分类等问题上，并且对初始化不敏感。但是，它存在梯度消失的问题。
+这里指出一下**sigmoid**的优势，适合用于与0/1取值、分类等问题上，并且对初始化不敏感。但是，它存在梯度消失的问题。
 
 ## supervised and unsupervised learning
 
