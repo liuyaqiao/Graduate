@@ -124,3 +124,22 @@ BN层是在激活层之前加入，对于mini-batch的SGD，我们的变换公�
 
 [参考文献](https://www.cnblogs.com/guoyaohua/p/8724433.html)
 
+week 3
+
+1/22
+
+- 我们为什么要选择softmax
+
+1. 因为这里softmax易于训练，可以替代cross entropy。如果利用cross entropy, 后向传播是它的导数可能是1/y，在这个分母概率比较小的情况下，可能会出现overflow的情况，造成训练过程的报错。所以利用softmax函数来训练，就不会出现这样的问题。
+
+2. 因为softmax同时考虑其他类别的得分，不会只考虑自己造成错误。
+
+- Regurlarization
+
+造成overfit的原因一般来说有两个：
+
+1. model有太多的参数
+2.有一些高次项的参数太大，它对整个模型的的影响太大。？
+
+这里给出了L1、L2 Regurlarization的方法
+
