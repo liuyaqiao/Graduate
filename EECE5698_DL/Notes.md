@@ -170,3 +170,30 @@ https://www.jianshu.com/p/4bad38fe07e6
 1/25
 
 CNN
+
+- DNN的结构主要由两个方面所决定：
+
+1. Architecture: number of layers, type of layers, activation functions, connection of layers, number of size, stride of CNN kernel, numbers of neuron in FC, size and stride of Pooling layers
+
+2. parameters: weights and bias
+
+- MLP：多层感知器
+
+至少含有一个隐藏层，的全连接网络。
+
+- CNN
+
+1. 注意一下conv计算的流程，有几个kernel对应这输出的feature map有几个channel。
+2. 下一层的计算公式
+
+conv：
+fileer size = f * f
+number of filters : k
+stride : s
+
+output size : A2 * B2 * C2
+
+A2 = ceiling((A1 - f)/s + 1)
+C2 = k
+
+在进行pooling的计算时，也可以使用上面这个公式。
