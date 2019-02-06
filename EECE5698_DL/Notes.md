@@ -197,3 +197,74 @@ A2 = ceiling((A1 - f)/s + 1)
 C2 = k
 
 在进行pooling的计算时，也可以使用上面这个公式。
+
+
+week 6
+
+2/5
+
+- 数值求导
+
+使用电脑求导求的行，是数值形式的导数，而不是解析形式的导数；
+
+所以对于y = max(x1,0)等特殊函数的求导时我们可以看作是这样：
+
+if y = x1, dy/dx = 1; else dy/dx = 0
+
+同样的我们relu和max pooingye可以做这样的处理。
+
+- mini-batch 和 mini batch learning
+
+我们要搞清mini batch, reshuffle, epoch, samples之间的关系；
+
+我们所有的sample可以分成很多相同的小部分，每一个小的部分就相当于是一个batch；我们训练的流程是：首先把所有的样本经过reshuffle之后，形成batch。之后在一个batch上对每一个sample进行梯度的计算，我们取最后梯度的平均值成为最终的梯度更新的方向；之后再进行下一个batch的计算和更新；当计算完所有的batch之后，我们称为完成了一个eppch，之后再次进行reshuffle操作，重新划分batch；开始进行下一个epoch，直到我们要求的epoch数量。
+
+mini-batch的batch_size受到gpu内存的影响。
+
+- how to train a neural network:
+
+Before training:
+1. choose activation functions
+2. Preprocess input data
+3. Weight initalization
+4. Choose regularization techniques
+5. Check gradient evaluation using numerical methods
+
+During training:
+1. Monitor the training process
+2. Choose the weight update method
+3. Use cross-validation for hyper-parameter selection
+
+After training:
+Model ensembles for better accuracy
+
+- Weight Initialization
+
+首先看几个不合适的方法：
+
+假设tanh
+
+1. 全部初始化为0
+
+正向传播的结果全是0，计算误差后进行反向传播，因为bp计算出的梯度是相同的，从而网络将变成一个完全对称的网络。同时，如果网络层数多雨2层，需要用到中间值的偏导，他们求出的结果将是0.
+
+2. 初始化为small random numbers
+
+经过几层之后，所有的neurons将会收敛为0. 导致我们的梯度也是0，无法进行有效的更新。
+
+因为权重比较小，线性计算之后激活之后也很小；几层之后，神经元之后的输出值就会成为0；
+
+3. 初始化为large random numbers
+
+经过几层传播之后，所有neurons将会收敛到 +1 或 -1. 也会导致梯度是0，无法有效的训练。
+
+所以我们需要一种方法，使得在神经元计算之后的值在激活函数合理的运算区域：
+
+Xavier Initialization : 
+
+它的目的是：尽可能的让输入和输出服从相同的分布，这样就能够避免后面层的激活函数的输出值趋向于0，这样使每一层的分布都接近于均值是0方差相同。所以，我们想办法使得他们的方差保持一致；
+我们的做法是，根据进入神经元和输出神经元的权重数量和权重的初始化建立联系。因为如果进入神经元的权重越多，那么这个权重应该初始化的比较小；
+
+但是针对到relu函数，这里仍然会出问题：
+
+原因是，每次运用relu函数的时候，由于relu函数的特性，他会使得一般的输出为0；自然输出的方差也改变了；所以我们使用之前的方法，在分母除2.
