@@ -110,6 +110,9 @@ BN的基本思想其实相当直观：因为深层神经网络在做非线性变
 
 prediction中不需要bn层。
 
+这是因为，如果只有一个样本去测试，那么它都均值将会是它本身。这是alpha项将为0，这时输出的结果将会只有beta。所有的输出结果都会保持不变。
+这时我们通过一个bool变量，来调控bn层。
+
 ![BN](https://raw.githubusercontent.com/liuyaqiao/Learning-Note/master/BN.png)
 
 BN层是在激活层之前加入，对于mini-batch的SGD，我们的变换公式就可以写成：
