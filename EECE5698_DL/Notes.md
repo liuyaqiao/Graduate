@@ -353,6 +353,7 @@ max pooling总能反应出最为显著的信息，一般是物体的纹理信息
 ![inception](https://raw.githubusercontent.com/liuyaqiao/Learning-Note/master/inception.png)
 
 至于为什么1维卷积核可以降低参数个数，这里是参考文件：
+![computation](https://github.com/liuyaqiao/Learning-Note/blob/master/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0_%E5%88%98%E4%BA%9A%E6%A8%B5.pdf)
 
 **ResNet**
 
