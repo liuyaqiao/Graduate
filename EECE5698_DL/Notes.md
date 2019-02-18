@@ -35,7 +35,7 @@ Week 2
 
 1/15
 
-## Activation Layer:
+- Activation Layer:
 
 我们需要加入激励层来添加非线性，这是神经网络中很重要的点。否则，如果只是线性模型，将不能解决很多问题。比如XOR。可以说，非线性是神经网络表现好的很重要的一个原因。
 
@@ -68,7 +68,7 @@ Relu的几种变形：
 
 这里指出一下**sigmoid**的优势，适合用于与0/1取值、分类等问题上，并且对初始化不敏感。但是，它存在梯度消失的问题。
 
-## supervised and unsupervised learning
+- supervised and unsupervised learning
 
 no essenital gap! 唯一的区别就是label，他们所做的事情是一样的。
 
@@ -78,7 +78,7 @@ classification 和 regression
 
 
 
-## minimum question
+- minimum question
 
 saddle point
 
