@@ -324,12 +324,40 @@ dropout也是在训练中使用，而在预测中不需要使用；原因有：d
 
 完成后要进行缩放：a/=keep_prob, keep_prob为保留一个节点的概率，通过缩放，在计算成本时任具有相同的期望值。
 
-week
+week 7
 
 2/15
 
 - Pooling
 
-1. 为什么pooling有用
-2. 为什么max pooling效果更好
-3. 为什么可以用同样的filter 去对整个图像进行作用
+**为什么用pooling**
+	1. 我们原来的feature map太大了，需要减少参数降低过拟合的风险。
+	2.  因为我们的图片具有不变性，经过平移、旋转等操作之后，最大值依旧会是当前的最大值。这样经过池化之后依旧保持了原有的显著特征。
+
+**为什么max pooling效果更好**
+
+max pooling总能反应出最为显著的信息，一般是物体的纹理信息；而average pooling则只能反应出图片的背景信息；
+
+**为什么可以用同样的filter 去对整个图像进行作用**
+
+因为图像中的物体具有平移、旋转不变形；
+
+- 常见的DNN
+
+**GoogleLenet**
+
+与其他的DNN不同，选用更深的网络去提取更多的特征，Googlenet是针对神经网络的另一个方面进行优化（宽度），它选择采用更多的尺寸的卷积核，能否一次提取更多的信息。所以它在一层上使用了三个维度的卷积核进行操作，通过多个卷积核组成了一个inception module，最后用一个合并的函数得出最终的feature map。但是，这带来的问题就是，大维度的卷积核会大幅度的提升参数的个数，带来计算量的增加和过拟合的风险。所以，它巧妙地运用了1维的卷积核去减少参数数量。
+
+下面是inception module的示意图：
+
+![inception](https://raw.githubusercontent.com/liuyaqiao/Learning-Note/master/inception.png)
+
+至于为什么1维卷积核可以降低参数个数，这里是参考文件：
+
+**ResNet**
+
+ResNet出现的原因是：太深的网络会很严重出现梯度消失和梯度下降的问题，无法通过有效的手段进行训练。
+
+![resmodule](https://raw.githubusercontent.com/liuyaqiao/Learning-Note/master/residual.png)
+
+它把当前的输出和两层之前的输入一同加入到了activation函数去学习。这个新加入的梯度不会使得传入的梯度太小无法学习，可以有效的解决梯度弥散的问题。
