@@ -362,3 +362,17 @@ ResNet出现的原因是：太深的网络会很严重出现梯度消失和梯�
 ![resmodule](https://raw.githubusercontent.com/liuyaqiao/Learning-Note/master/residual.png)
 
 它把当前的输出和两层之前的输入一同加入到了activation函数去学习。这个新加入的梯度不会使得传入的梯度太小无法学习，可以有效的解决梯度弥散的问题。
+
+2/22 
+
+- DenseNet
+
+Densenet 是resnet的扩展，它通过多层跳跃连接的方式来连接解决梯度消失。
+
+缺点是参数比较多，不好训练。训练的时候需要很多的合并操作，需要的显存比较高。
+
+- 1 维卷积核可以减少参数和计算的个数，有两个好处：
+		1. 可以降低过拟合的风险
+		2. 使得计算更快
+		
+- RNN
