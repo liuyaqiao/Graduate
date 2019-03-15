@@ -452,9 +452,30 @@ greedy layer-wise pre-training
 3. 这和卷积、去卷积所做的事情类似；
 4. kernel PCA一样可以带来非线性，但是相比于AE，它对参数更加敏感。
 
+- best represetation
+使用unsuprvisd pretraining一定程度上会提升收敛的速度，所以它可以一定程度上取代BN。
+
+在现在的很多神经网络中，我们会使用average pooling代替全连接层。
+
+首先我们关注一下全连接层的优缺点：
+    优点：有时候效果不错
+    缺点：参数量比较大比较多，造成了训练速度比较慢容易过拟合。
+
+这里我们提出了用global average pooling代替；
+
+全连接层所做的是把卷积层合成一个向量并且把输出的结果做一个整合；pooling层同样可以做到，我们可以看成GAP是在网络的结构上做正则化防止过拟合。缺点是使用gap可能使网络收敛变慢。
+
+
+
 - Tranfer learning：
 把已学训练好的模型参数迁移到新的模型来帮助新模型训练
+why:
+1.需要用DNN去提取特征
+2.没有足量的数据
+3.数据没有label
+4.计算的资源比较少
 
+缺点在于这种模型没有很好的理论支撑；
 
 1. 起因：
 现实中，往往不满足采样training和inference时，采用的数据服从相同的分布（distribution）、来源于相同的特征空间（feature space）。因为标记样本数有限，数据分布会发生变化。
