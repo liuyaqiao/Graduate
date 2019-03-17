@@ -1,6 +1,6 @@
 ## Notes
 
-Week 1
+## Week 1
 
 1/8
 
@@ -31,11 +31,11 @@ Overfit的原因现在看来有两方面：
 
 对于**alphago**来说，下采样或者其他方式采用没有任何物理意义。因为池化的本身目的就是要保留图像的部分特征，对于alphago这种选择的模型来说，池化没有任何意义。所以alphago中没有池化的概念。
 
-Week 2
+## Week 2
 
 1/15
 
-## Activation Layer:
+### Activation Layer:
 
 我们需要加入激励层来添加非线性，这是神经网络中很重要的点。否则，如果只是线性模型，将不能解决很多问题。比如XOR。可以说，非线性是神经网络表现好的很重要的一个原因。
 
@@ -68,7 +68,7 @@ Relu的几种变形：
 
 这里指出一下**sigmoid**的优势，适合用于与0/1取值、分类等问题上，并且对初始化不敏感。但是，它存在梯度消失的问题。
 
-## supervised and unsupervised learning
+### supervised and unsupervised learning
 
 no essenital gap! 唯一的区别就是label，他们所做的事情是一样的。
 
@@ -78,7 +78,7 @@ classification 和 regression
 
 
 
-## minimum question
+### minimum question
 
 saddle point
 
@@ -197,3 +197,16 @@ A2 = ceiling((A1 - f)/s + 1)
 C2 = k
 
 在进行pooling的计算时，也可以使用上面这个公式。
+
+## week 4
+
+1/29
+
+tensorflow tutorial
+
+- tensorflow 是通过graph定义的方式来进行计算的；
+- 一般用variable来储存变量，一般是要进行训练的量，例如weights or bias.
+- 一般用placeholder来储存输入，它一般
+
+在定义完graph之后，要记得去run，否则它仍然以graph的形式存在。
+所有的参数在session之前要做一次init
